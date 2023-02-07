@@ -28,13 +28,17 @@ public class Programe {
                 
             
             UI.clearScreen();
-            UI.printBoard(chessMatch.getPieces());
+            UI.printMatch(chessMatch);
             System.out.println("");
-            System.out.println("Posição de origem");
+            System.out.print("Posicao de origem: ");
             ChessPosition source = UI.readChessPosition(sc);
-
+            
+            boolean [][] possibleMoves = chessMatch.possibleMove(source);
+            UI.clearScreen();
+            UI.printBoard(chessMatch.getPieces(), possibleMoves);
+            
             System.out.println("");
-            System.out.println("Destino");
+            System.out.print("Destino: ");
             ChessPosition target = UI.readChessPosition(sc);
 
             ChessPiece capturedPiece = chessMatch.performChessMove(source, target);
