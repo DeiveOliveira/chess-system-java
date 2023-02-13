@@ -4,10 +4,11 @@
  */
 package boardgame;
 
+import chess.ChessPosition;
+
 public abstract class Piece {
 
     protected Position position;
-
     private Board board;
 
     public Piece(Board board) {
@@ -22,6 +23,11 @@ public abstract class Piece {
 
     public boolean possibleMove(Position position) {
         return possibleMoves()[position.getRow()][position.getColumn()];
+    }
+    
+    //getChessPosition era da class ChessPosition porem estava dando erro na chmada no metodo TestCheck
+     public ChessPosition getChessPosition() {
+        return ChessPosition.fromPosition(position);
     }
 
     public boolean isThereAnyPossibleMove() {
